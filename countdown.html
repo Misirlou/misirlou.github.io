@@ -9,6 +9,7 @@
 	<div id="bodywrapper">
 		<div id="content">
 			<h1 id="countdown">
+				<span id="negative"></span>
 				<span id="days">&lt 9000 Days</span>
 				<span id="hours">0 Hours</span>
 				<span id="minutes">0 Minutes</span>
@@ -206,7 +207,10 @@
 		    startDate = startDate.getTime();
 		    
 		    let timeRemaining = parseInt((endDate - startDate) / 1000);
-		    
+		    if (timeRemaining < 0) {
+		    	timeRemaining = -timeRemaining
+		    	document.getElementById("negative").innerHTML = "-"
+		    }
 		    if (timeRemaining >= 0) {
 		      days = parseInt(timeRemaining / 86400);
 		      timeRemaining = (timeRemaining % 86400);
